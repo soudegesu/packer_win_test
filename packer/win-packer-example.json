@@ -1,0 +1,24 @@
+{
+  "builders": [
+  {
+    "type": "amazon-ebs",
+    "region": "ap-northeast-1",
+    "instance_type": "t2.medium",
+    "source_ami": "ami-d76d77b0",
+    "ami_name": "packer-demo-{{timestamp}}",
+    "user_data_file": "scripts/windows-userdata.txt",
+    "communicator": "winrm",
+    "winrm_username": "Administrator",
+    "winrm_insecure": true,
+    "winrm_use_ssl": true
+  }],
+  "provisioners": [
+  {
+      "type":  "ansible",
+      "playbook_file": "ansible/win-playbook.yml",
+      "extra_arguments": [
+        "--connection", "packer", "-vvvv",
+        "--extra-vars", "ansible_shell_type=powershell ansible_shell_executable=None"
+      ]
+  }]
+}
