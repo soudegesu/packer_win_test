@@ -1,4 +1,8 @@
 {
+  "variables": {
+    "vpc_id": "",
+    "subnet_id": ""
+  },
   "builders": [
   {
     "type": "amazon-ebs",
@@ -10,7 +14,9 @@
     "communicator": "winrm",
     "winrm_username": "Administrator",
     "winrm_insecure": true,
-    "winrm_use_ssl": true
+    "winrm_use_ssl": true,
+    "vpc_id": "{{user `vpc_id`}}",
+    "subnet_id": "{{user `subnet_id`}}"
   }],
   "provisioners": [
   {

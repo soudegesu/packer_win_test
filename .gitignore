@@ -6,6 +6,6 @@ packer_cache/
 
 *.retry
 
-win-variables.json
+packer/win-variables.json
 
 *.pyc
