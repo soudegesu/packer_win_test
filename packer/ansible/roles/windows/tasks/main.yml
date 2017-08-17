@@ -1,0 +1,10 @@
+---
+- name: Add a user
+  win_user:
+    name: hogehoge
+    password: B0bP4ssw0rd
+    groups: ["Users", "Remote Desktop Users"]
+    state: present
+- name: enable remote login
+  win_shell: |
+    Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server" -Name "fDenyTSConnections" –Value 0

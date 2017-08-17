@@ -25,6 +25,7 @@
       "extra_arguments": [
         "--connection", "packer", "-vvvv",
         "--extra-vars", "ansible_shell_type=powershell ansible_shell_executable=None"
-      ]
+      ],
+      "user": "Administrator"
   }]
 }
